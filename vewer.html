@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    .v-enter-active {
+      animation: bounceIn 4s;
+    }
+    .v-leave-active {
+      animation: bounceIn 4s reverse;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.2);
+        opacity: 0 
+      }
+      50% {
+        transform: scale(1.5);
+        
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    </style>
+
+  </head>
+  <body>
+      <div id="root">
+         
+        <div @click="show=!show">
+           <h1>{{message}}</h1>
+        </div>
+          <transition>
+            <h3 v-if="show">{{discribe}}</h3>
+          </transition>
+          
+      </div>
+
+    <script>
+      new Vue({
+        el: '#root',
+        data() {
+          return {
+            message: 'Hello World!',
+            show: false,
+            discribe: 'this is usually the first thing a programmer learns to write'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

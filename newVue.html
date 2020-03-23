@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <title>New Home</title>
+    
+  </head>
+  <body>
+    <div id="root">
+      <input v-model="newfruit" @keyup.enter="addfruit">
+      <button v-on:click="addfruit">
+        <!--<button @click.prevent.stop="addfruit">--> 
+        + ADD
+      </button>
+    
+      <ul>
+        <li v-for="fruit in fruits" :key="fruit.name">{{ fruit.name | capitalize | hitty | sample }}</li>
+      </ul>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    var root = new Vue({
+      el: '#root',
+      data: {
+        fruits: [
+          {name: 'grapes'},
+          {name: 'almond'},
+          {name: 'pineapple'},
+          {name: 'mango'}
+          ],
+          newfruit: ''
+      },
+      methods: {
+        addfruit: function(){
+          this.fruits.push({name: this.newfruit})
+          this.newfruit = ''
+        }
+      },
+      filters: {
+        capitalize: function(value){
+          return value.toUpperCase()
+        },
+        hitty: function(value){
+          return value + ' happy '
+        },
+        sample: function(value){
+          return value + value
+        }
+      }
+      })
+    </script>
+    
+  </body>
+</html>

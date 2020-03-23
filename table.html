@@ -1,0 +1,136 @@
+<html>
+  <head>
+    <title>New Table</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <h2>Table Test</h2>
+    <div id="soon">
+      <table>
+        <thead>
+          <tr>
+            <th>ID Number</th>
+            <th>Name</th>
+            <th>Registration Date</th>
+            <th>Contact Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="row in rows" :key="row.id">
+            <td>{{row.id}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.RegDate}}</td>
+            <td>{{row.contact}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-left py-3" id="one" @keyup.enter="addfruit">
+        <label>Id number</label><br>
+        <input type="text" id="id" v-model="id" class="border-solid border-2 "/>  
+      </div>
+      <div class="flex py-3" id="peg">
+        <div class="w-1/3 text-left">
+          <label>Surname</label><br>
+          <input type="text" id="lname" v-model="lname" class="border-solid border-2 "/>
+        </div>
+        <div class="w-1/3 text-left mx-2">
+          <label>Middle Name</label><br>
+          <input type="text" id="mname" v-model="mname" class="border-solid border-2"/>
+        </div>
+        <div class="w-1/3 text-left">
+          <label>First Name</label><br>
+          <input type="text" id="fname" v-model="fname" class="border-solid border-2"/> 
+        </div>
+      </div>
+      <div class="flex py-3">
+        <div class="w-1/2 text-left">
+          <label>Date of Birth</label><br>
+          <input type="date" v-model="mydate" class="border-solid border-2 w-48"/> 
+        </div>
+        <div class="w-1/2 text-left">
+          <label>Date of Death</label><br>
+          <input type="date" v-model="mydet" class="border-solid border-2 w-48"/>
+        </div>
+      </div>
+      
+      
+      <button v-on:click="addrow" class="bg-orange-900 no-underline text-white px-5 py-3 shadow-lg rounded-lg text-sm float-left" id="sub">
+        Submit
+      </button>
+    </div>
+
+    <style>
+      table {
+  font-family: 'Open Sans', sans-serif;
+  width: 750px;
+  border-collapse: collapse;
+  border: 3px solid #44475C;
+  margin: 10px 10px 0 10px;
+}
+
+table th {
+  text-transform: uppercase;
+  text-align: left;
+  background: #44475C;
+  color: #FFF;
+  padding: 8px;
+  min-width: 30px;
+}
+
+table td {
+  text-align: left;
+  padding: 8px;
+  border-right: 2px solid #7D82A8;
+}
+table td:last-child {
+  border-right: none;
+}
+table tbody tr:nth-child(2n) td {
+  background: #D4D8F9;
+}
+    </style>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+      var app = new Vue({
+      el: '#soon',
+      data() {
+        return{
+        rows: [
+            { id: 1, name: "Chandler Bing", RegDate: 'may', contact: '305-917-1301' },
+            { id: 2, name: "Ross Geller", RegDate: 'june', contact: '210-684-8953' },
+            { id: 3, name: "Rachel Green", RegDate: 'march', contact: '765-338-0312'},
+            { id: 4, name: "Monica Geller", RegDate: 'april', contact: '714-541-3336' },
+            { id: 5, name: "Joey Tribbiani", RegDate: 'january', contact: '972-297-6037' },
+            { id: 6, name: "Phoebe Buffay", RegDate: 'december', contact: '760-318-8376' }
+        ],
+        newRow: {
+          id: '',
+         lname: '',
+         mname: '',
+         fname: '',
+         mydate: '',
+         mydet: '',
+         contact: '897098790',
+         regDate: '03/07/2018'
+        }
+      }
+    },
+    methods: {
+    addrow: function() {
+      var newRow = this.$get('newRow');
+      rows.push({
+        id: newRow.id,
+        name: newRow.lname,
+        regDate:newRow.regDate,
+        contact: newRow.contact
+      })
+    }
+  }
+   });
+    </script>
+
+
+  </body>
+</html>
